@@ -1,5 +1,4 @@
 const express = require('express');
-const { storage } = require('../app.js');
 const { get, create } = require('../models/users.js');
 const { compareHash } = require('../../lib/hashUtils.js');
 

@@ -3,11 +3,12 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const { secret } = require('../config.js');
 const authenticationRouter = require('./controllers/authentication.js');
-// const path = require('path');
+const path = require('path');
+
 const app = express();
 
 const storage = MongoStore.create({ mongoUrl: 'mongodb://localhost/sessions-authentication' });
-// app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
+app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
 app.use(
   session({
     storage,
