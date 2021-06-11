@@ -1,9 +1,9 @@
 const express = require('express');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const path = require('path');
 const { secret } = require('../config.js');
 const authenticationRouter = require('./controllers/authentication.js');
-const path = require('path');
 
 const app = express();
 
@@ -20,5 +20,8 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/auth', authenticationRouter);
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'client', 'dist', 'index.html'));
+});
 
 module.exports = app;

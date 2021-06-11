@@ -1,5 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
 import App from './components/App';
+import ProvideAuth from './components/ProvideAuth';
 
-render(<App />, document.getElementById('app'));
+const toRender = (
+  <ProvideAuth>
+    <App />
+  </ProvideAuth>
+);
+
+render(toRender, document.getElementById('app'));
